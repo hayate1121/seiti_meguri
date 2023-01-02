@@ -21,14 +21,28 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "/about" => "homes#about", as: "about"
+    get "/users/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
+    patch "/users/invalid" => "users#invalid", as: "invalid"
+    resources :animes
+    resources :scenes
+    resources :users
+    resources :posts
+    resources :stores
   end
   
   #店舗用
   namespace :business do
+    resources :stores
   end
   
   #管理者用
   namespace :admin do
+    root to: "homes#top"
+    resources :animes
+    resources :scenes
+    resources :posts
+    resources :users
+    resources :stores
   end
   
 end
