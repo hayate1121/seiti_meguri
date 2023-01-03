@@ -1,23 +1,23 @@
 Rails.application.routes.draw do
   
-  #ユーザー用
+  #ユーザー用.
   devise_for :users, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
   }
   
-  #店舗用
+  #店舗用.
   devise_for :stores, skip: [:passwords], controllers: {
   registrations: "business/registrations",
   sessions: 'business/sessions'
   }
   
-  #管理者用
+  #管理者用.
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
   }
   
-  #ユーザー用
+  #ユーザー用.
   scope module: :public do
     root to: "homes#top"
     get "/about" => "homes#about", as: "about"
@@ -30,12 +30,12 @@ Rails.application.routes.draw do
     resources :stores
   end
   
-  #店舗用
+  #店舗用.
   namespace :business do
     resources :stores
   end
   
-  #管理者用
+  #管理者用.
   namespace :admin do
     root to: "homes#top"
     resources :animes
