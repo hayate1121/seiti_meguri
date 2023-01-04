@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="">
+      本当に退会しますか？
+    </div>
+  </div>
+  <div class="row">
+    <div class="">
+      退会すると、会員登録情報や
+    </div>
+  </div>
+  <div class="row">
+    <div class="">
+      これまでの投稿履歴が閲覧できなくなります。
+    </div>
+  </div>
+  <div class="row">
+    <div class="">
+      退会する場合は、「退会する」をクリックしてください。
+    </div>
+  </div>
+  <div class="row">
+    <div class="">
+      <%= link_to '退会しない', user_path(@user.id), class: "btn btn-primary" %>
+    </div>
+    <div class="">
+      <%= form_with model: @user, url: invalid_path(@user.id), method: :patch do |f| %>
+      <%= f.hidden_field :is_deleted, :value => true %>
+      <%= f.submit '退会する', class: "btn btn-danger", data: {confirm: "退会しますか？"} %>
+      <% end %>
+    </div>
+  </div>
+</div>

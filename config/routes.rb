@@ -17,6 +17,11 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
   }
   
+  #ゲストログイン用.
+  devise_scope :public do
+    post '/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+  
   #ユーザー用.
   scope module: :public do
     root to: "homes#top"

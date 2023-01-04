@@ -2,8 +2,14 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  before_action :customer_state, only: [:create]
-
+  before_action :user_state, only: [:create]
+  
+  #ゲストログイン用.
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to root_path
+  end
 
   # GET /resource/sign_in
   # def new
