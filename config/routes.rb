@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   }
   
   #ゲストログイン用.
-  devise_scope :public do
-    post '/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
   
   #ユーザー用.

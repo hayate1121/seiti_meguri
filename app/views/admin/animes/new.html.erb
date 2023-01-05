@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="">
+      <h5>作品登録</h5>
+    </div>
+  </div>
+  <%= form_with model: @anime do |f| %>
+  <div class="row">
+    <div class="">
+      <%= f.label "作品名" %>
+    </div>
+    <div class="">
+      <%= f.text_field :title %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="">
+      <%= f.label "舞台" %>
+    </div>
+    <div class="">
+      <%= f.text_field :spot %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="">
+      <%= f.submit "作成する" %>
+    </div>
+  </div>
+  <% end %>
+</div>
