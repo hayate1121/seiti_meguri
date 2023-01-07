@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     resources :animes
     resources :scenes
     resources :users
-    resources :posts
+    resources :photos
     resources :stores
   end
   
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :animes
     resources :scenes
-    resources :posts
+    resources :photos
     resources :users
     resources :stores
   end

@@ -34,6 +34,7 @@ class DeviseCreateStores < ActiveRecord::Migration[6.1]
       
       t.string :store_name
       t.text :store_introduction
+      t.integer :anime_id
       
       t.timestamps null: false
     end

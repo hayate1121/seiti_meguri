@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2023_01_01_120711) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "posts", force: :cascade do |t|
+  create_table "photos", force: :cascade do |t|
     t.integer "user_id"
     t.integer "anime_id"
     t.integer "scene_id"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2023_01_01_120711) do
     t.datetime "remember_created_at"
     t.string "store_name"
     t.text "store_introduction"
+    t.integer "anime_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_stores_on_email", unique: true
