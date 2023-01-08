@@ -4,9 +4,9 @@ class Admin::AnimesController < ApplicationController
   end
   
   def create
-    @anime = Anime.new(anime_params)
-    @anime.save
-    redirect_to root_path(@anime.id)
+    anime = Anime.new(anime_params)
+    anime.save
+    redirect_to root_path(anime.id)
   end
   
   def show
@@ -20,9 +20,9 @@ class Admin::AnimesController < ApplicationController
   end
   
   def update
-    @anime = Anime.find(params[:id])
-    @anime.update(anime_params)
-    redirect_to anime_path(@anime.id)
+    anime = Anime.find(params[:id])
+    anime.update(anime_params)
+    redirect_to anime_path(anime.id)
   end
   
   def index

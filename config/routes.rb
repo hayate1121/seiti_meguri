@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     get "/about" => "homes#about", as: "about"
     get "/users/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
     patch "/users/invalid" => "users#invalid", as: "invalid"
+    get "/photos/favorites" => "photos#favorite", as: "favorite"
     resources :animes
     resources :scenes
     resources :users

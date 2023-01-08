@@ -1,6 +1,13 @@
 class Public::PhotosController < ApplicationController
+  def new
+    @photo = Photo.new
+  end
+  
   def index
     @photos = Photo.all
+  end
+  
+  def favorite
   end
   
   def create
@@ -14,15 +21,14 @@ class Public::PhotosController < ApplicationController
   end
   
   def update
-    @photo = Photo.find(params[:id])
-    @photo.update(photo_params)
+    photo = Photo.find(params[:id])
+    photo.update(photo_params)
     redirect_to photo_path
   end
   
   def destroy
-    @photo = Photo.find(params[:id])
-    @photo.destroy
-    @photos = Photo.all
+    photo = Photo.find(params[:id])
+    photo.destroy
     redirect_to photos_path
   end
   
