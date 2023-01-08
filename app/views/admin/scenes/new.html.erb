@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="">
+      シーン追加
+    </div>
+  </div>
+  <%= form_with model: @scene do |f| %>
+  <div class="row">
+    <div class="">
+      <%= f.label "scene_name" %>
+    </div>
+    <div class="">
+      <%= f.text_field :scene_name %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="">
+      <%= f.submit "追加する" %>
+    </div>
+  </div>
+  <% end %>
+</div>

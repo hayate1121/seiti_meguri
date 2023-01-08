@@ -22,4 +22,10 @@ class Admin::StoresController < ApplicationController
     store.destroy
     redirect_to stores_path
   end
+  
+  private
+  
+  def store_params
+    params.require(:store).permit(:store_name, :store_introduction, :anime_id, :email)
+  end
 end
