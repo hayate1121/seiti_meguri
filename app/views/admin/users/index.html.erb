@@ -9,6 +9,7 @@
       <table class="table">
         <thead>
           <tr>
+            <th>ID</th>
             <th>ユーザー名</th>
             <th>メールアドレス</th>
             <th>ステータス</th>
@@ -17,6 +18,7 @@
         <% @users.each do |user| %>
         <tbody>
           <tr>
+            <td><%= user.id %></td>
             <td><%= user.name %></td>
             <td><%= user.email %></td>
             <td><%= user.is_deleted %></td>

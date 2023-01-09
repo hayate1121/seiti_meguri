@@ -32,9 +32,10 @@ class DeviseCreateStores < ActiveRecord::Migration[6.1]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
       
+      t.integer :anime_id
       t.string :store_name
       t.text :store_introduction
-      t.integer :anime_id
+      t.string :store_address
       
       t.timestamps null: false
     end

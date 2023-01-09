@@ -82,9 +82,10 @@ ActiveRecord::Schema.define(version: 2023_01_08_123016) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "anime_id"
     t.string "store_name"
     t.text "store_introduction"
-    t.integer "anime_id"
+    t.string "store_address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_stores_on_email", unique: true
