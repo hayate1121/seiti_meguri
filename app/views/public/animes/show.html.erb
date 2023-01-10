@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="">
+      <h5>作品詳細</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="">
+      作品名
+    </div>
+    <div class="">
+      <%= @anime.title %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="">
+      舞台
+    </div>
+    <div class="">
+      <%= @anime.spot %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="">
+      シーン一覧
+    </div>
+    <div class="">
+      <% @scenes.each do |scene| %>
+        <%= scene.scene_name %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="">
+      付近の店舗一覧
+    </div>
+  </div>
+  <div class="row">
+    <div class="">
+      
+    </div>
+  </div>
+</div>

@@ -4,10 +4,12 @@ class Public::PhotosController < ApplicationController
   end
   
   def index
-    @photos = Photo.all
+    @user = User.find(params[:id])
+    @photos = @user.photos
   end
   
   def favorite
+    
   end
   
   def create

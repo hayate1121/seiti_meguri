@@ -4,6 +4,8 @@ class Store < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
+  belongs_to :anime
+  
   has_one_attached :store_image
   
 end

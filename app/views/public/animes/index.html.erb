@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="">
+      作品一覧
+    </div>
+  </div>
+  <div class="row">
+    <div class="">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>作品名</th>
+            <th>住所</th>
+          </tr>
+        </thead>
+        <%= @animes.each do |anime| %>
+        <tbody>
+          <tr>
+            <td>
+              <%= anime.title %>
+            </td>
+            <td>
+              <%= anime.spot %>
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
