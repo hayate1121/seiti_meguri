@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col">
       <table class="table">
         <thead>
           <tr>
@@ -12,7 +12,7 @@
           <% @animes.each do |anime| %>
           <tr>
             <td>
-              <%= anime.title %>
+              <%= link_to anime.title, admin_anime_path(anime.id) %>
             </td>
             <td>
               <%= anime.spot %>

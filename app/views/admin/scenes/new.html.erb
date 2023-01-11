@@ -6,16 +6,16 @@
   </div>
   <%= form_with model: @scene do |f| %>
   <div class="row">
-    <div class="">
-      <%= f.label "scene_name" %>
+    <div class="col">
+      <%= f.label "シーン名" %>
     </div>
-    <div class="">
+    <div class="col">
       <%= f.text_field :scene_name %>
     </div>
   </div>
   
   <div class="row">
-    <div class="">
+    <div class="col">
       <%= f.submit "追加する" %>
     </div>
   </div>

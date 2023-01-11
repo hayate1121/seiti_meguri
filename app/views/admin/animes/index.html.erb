@@ -1,11 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col">
       作品一覧
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
+      <%= link_to "新規登録", new_admin_anime_path %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
       <table class="table">
         <thead>
           <tr>
@@ -13,11 +18,11 @@
             <th>住所</th>
           </tr>
         </thead>
-        <%= @animes.each do |anime| %>
+        <% @animes.each do |anime| %>
         <tbody>
           <tr>
             <td>
-              <%= anime.title %>
+              <%= link_to anime.title, admin_anime_path(anime.id) %>
             </td>
             <td>
               <%= anime.spot %>

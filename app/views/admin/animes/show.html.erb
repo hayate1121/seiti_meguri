@@ -5,36 +5,41 @@
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
+      <%= image_tag @anime.get_anime_image(100,100) %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
       作品名
     </div>
-    <div class="">
+    <div class="col">
       <%= @anime.title %>
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
       舞台
     </div>
-    <div class="">
+    <div class="col">
       <%= @anime.spot %>
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
       シーン一覧
     </div>
-    <div class="">
+    <div class="col">
       <% @scenes.each do |scene| %>
         <%= scene.scene_name %>
       <% end %>
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
       <%= link_to "編集する", edit_admin_anime_path %>
     </div>
-    <div class="">
+    <div class="col">
       <%= link_to "シーン追加", new_admin_scene_path %>
     </div>
   </div>

@@ -1,28 +1,36 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col">
       <h5>作品登録</h5>
     </div>
   </div>
-  <%= form_with model: @anime do |f| %>
+  <%= form_with model: @anime, url: admin_animes_path do |f| %>
   <div class="row">
-    <div class="">
+    <div class="col">
+      <%= f.label "画像" %>
+    </div>
+    <div class="col">
+      <%= f.file_field :ainime_image, accept: "image/*" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
       <%= f.label "作品名" %>
     </div>
-    <div class="">
+    <div class="col">
       <%= f.text_field :title %>
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
       <%= f.label "舞台" %>
     </div>
-    <div class="">
+    <div class="col">
       <%= f.text_field :spot %>
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
       <%= f.submit "作成する" %>
     </div>
   </div>

@@ -33,8 +33,18 @@
   </div>
 <% end %>
 
-<div>
-登録がお済みの方は
-<%= link_to "こちら", new_user_session_path %>
-<a>からログインしてください。</a>
+<div class="row">
+  <div class="col">
+    登録がお済みの方は
+    <%= link_to "こちら", new_user_session_path %>
+    からログインしてください。
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    店舗登録の方は
+    <%= link_to "こちら", new_store_registration_path %>
+    から新規登録してください。
+  </div>
 </div>
