@@ -1,20 +1,35 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col">
       投稿詳細
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
+      <%= image_tag @photo.get_image(100,100) %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
       住所
     </div>
-    <div class="">
+    <div class="col">
       <%= @photo.address %>
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
+      コメント
+    </div>
+    <div class="col">
       <%= @photo.comment %>
     </div>
   </div>
+  <% if @photo.user_id == current_user.id %>
+  <div class="row">
+    <div class="col">
+      <%= link_to "編集する", edit_photo_path %>
+    </div>
+  </div>
+  <% end %>
 </div>

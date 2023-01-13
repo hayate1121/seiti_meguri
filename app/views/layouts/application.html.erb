@@ -38,6 +38,9 @@
                 <%= link_to "マイページ", user_path(current_user.id) , class:"nav-link text-dark" %>
               </li>
               <li>
+                <%= link_to "作品一覧", animes_path , class:"nav-link text-dark" %>
+              </li>
+              <li>
                 <%= link_to "ログアウト", destroy_user_session_path, class:"nav-link text-dark", method: :delete %>
               </li>
               <% elsif store_signed_in? %>

@@ -6,11 +6,12 @@ class Admin::ScenesController < ApplicationController
   def create
     scene = Scene.new(scene_params)
     scene.save
-    redirect_to scene_path(scene.id)
+    redirect_to admin_scene_path(scene.id)
   end
   
   def show
     @scene = Scene.find(params[:id])
+    @photos = @scene.photos
   end
   
   def edit
@@ -19,8 +20,8 @@ class Admin::ScenesController < ApplicationController
   
   def update
     scene = Scene.find(params[:id])
-    scene.update
-    redirect_to scene_path(scene.id)
+    scene.update(scene_params)
+    redirect_to admin_scene_path(scene.id)
   end
   
   private

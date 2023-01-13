@@ -31,7 +31,7 @@
     </div>
     <div class="col">
       <% @scenes.each do |scene| %>
-        <%= scene.scene_name %>
+        <%= link_to scene.scene_name, admin_scene_path %><br>
       <% end %>
     </div>
   </div>

@@ -1,32 +1,32 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col">
       シーン詳細
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
       シーン名
     </div>
-    <div class="">
+    <div class="col">
       <%= @scene.scene_name %>
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
       <%= link_to "編集する", edit_admin_scene_path %>
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
       投稿一覧
     </div>
   </div>
   <div class="row">
-    
-    <div class="">
-      
+    <% @photos.each do |photo| %>
+    <div class="col">
+      <%= image_tag photo.get_image(100,100) %>
     </div>
-    
+    <% end %>
   </div>
 </div>

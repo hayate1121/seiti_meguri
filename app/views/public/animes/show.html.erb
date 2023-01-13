@@ -1,43 +1,50 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col">
       <h5>作品詳細</h5>
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
+      <%= image_tag @anime.get_anime_image(100,100) %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
       作品名
     </div>
-    <div class="">
+    <div class="col">
       <%= @anime.title %>
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
       舞台
     </div>
-    <div class="">
+    <div class="col">
       <%= @anime.spot %>
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
       シーン一覧
     </div>
-    <div class="">
+    <div class="col">
       <% @scenes.each do |scene| %>
-        <%= scene.scene_name %>
+        <%= link_to scene.scene_name, scene_path(scene.id) %><br>
       <% end %>
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
       付近の店舗一覧
     </div>
   </div>
   <div class="row">
-    <div class="">
-      
+    <div class="col">
+      <% @stores.each do |store| %>
+        <%= link_to store.store_name, store_path(store.id) %>
+      <% end %>
     </div>
   </div>
 </div>

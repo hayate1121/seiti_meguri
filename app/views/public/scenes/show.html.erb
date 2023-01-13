@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      シーン詳細
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      シーン名
+    </div>
+    <div class="col">
+      <%= @scene.scene_name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      新規投稿
+    </div>
+  </div>
+  
+  <%= form_with model: @photo, url: photos_path do |f| %>
+  <div class="row">
+    <div class="col">
+      <%= f.label "写真" %>
+    </div>
+    <div class="col">
+      <%= f.file_field :image, accept: "image/*" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= f.label "住所" %>
+    </div>
+    <div class="col">
+      <%= f.text_field :address %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= f.label "コメント" %>
+    </div>
+    <div class="col">
+      <%= f.text_field :comment %>
+    </div>
+  </div>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :anime_id, :value => @scene.anime_id %>
+  <%= f.hidden_field :scene_id, :value => @scene.id %>
+  <div class="row">
+    <div class="col">
+      <%= f.submit "投稿する" %>
+    </div>
+  </div>
+  <% end %>
+  
+  <div class="row">
+    <div class="col">
+      投稿一覧
+    </div>
+  </div>
+  <div class="row">
+    <% @photos.each do |photo| %>
+    <div class="col">
+      <%= image_tag photo.get_image(100,100) %>
+    </div>
+    <% end %>
+  </div>
+</div>

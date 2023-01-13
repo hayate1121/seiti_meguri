@@ -8,6 +8,10 @@ class Public::PhotosController < ApplicationController
     @photos = @user.photos
   end
   
+  def show
+    @photo = Photo.find(params[:id])
+  end
+  
   def favorite
     
   end
@@ -37,7 +41,7 @@ class Public::PhotosController < ApplicationController
   private
   
   def photo_params
-    params.require(:photo).permit(:user_id, :anime_id, :scene_id, :address, :comment)
+    params.require(:photo).permit(:user_id, :anime_id, :scene_id, :address, :comment, :image)
   end
   
 end
