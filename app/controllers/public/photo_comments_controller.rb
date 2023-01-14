@@ -7,6 +7,11 @@ class Public::PhotoCommentsController < ApplicationController
     reply.save
     redirect_to photo_path(photo.id)
   end
+  
+  def destroy
+    PhotoComment.find(params[:id]).destroy
+    redirect_to photo_path(params[:photo_id])
+  end
 
   private
 

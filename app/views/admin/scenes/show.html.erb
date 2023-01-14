@@ -25,7 +25,9 @@
   <div class="row">
     <% @photos.each do |photo| %>
     <div class="col">
+      <%= link_to admin_photo_path(photo.id) do %>
       <%= image_tag photo.get_image(100,100) %>
+      <% end %>
     </div>
     <% end %>
   </div>

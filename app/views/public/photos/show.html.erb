@@ -42,6 +42,13 @@
       <%= photo_comment.created_at.strftime('%Y/%m/%d') %><%= photo_comment.reply %>
     </div>
   </div>
+  <% if photo_comment.user == current_user %>
+  <div class="row">
+    <div class="col">
+      <%= link_to "削除", photo_photo_comment_path(photo_comment.photo, photo_comment), method: :delete %>
+    </div>
+  </div>
+  <% end %>
   <% end %>
   
   <%= form_with model: [@photo, @photo_comment] do |f| %>

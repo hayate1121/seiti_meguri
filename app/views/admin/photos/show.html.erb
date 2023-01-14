@@ -1,23 +1,38 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col">
       投稿詳細
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
       住所
     </div>
-    <div class="">
+    <div class="col">
       <%= @photo.address %>
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
       コメント
     </div>
-    <div class="">
+    <div class="col">
       <%= @photo.comment %>
     </div>
   </div>
+   <% @photo.photo_comments.each do |photo_comment| %>
+  <div class="row">
+    <div class="col">
+      <%= photo_comment.user.name %>
+    </div>
+    <div class="col">
+      <%= photo_comment.created_at.strftime('%Y/%m/%d') %><%= photo_comment.reply %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= link_to "削除", admin_photo_photo_comment_path(photo_comment.photo, photo_comment), method: :delete %>
+    </div>
+  </div>
+  <% end %>
 </div>

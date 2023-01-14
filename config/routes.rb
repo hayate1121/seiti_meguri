@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     resources :scenes
     resources :users
     resources :photos do
-      resources :photo_comments, only: [:create]
+      resources :photo_comments, only: [:create, :destroy]
     end
     resources :stores
   end
@@ -48,7 +48,9 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :animes
     resources :scenes
-    resources :photos
+    resources :photos do
+      resources :photo_comments, only: [:destroy]
+    end
     resources :users
     resources :stores
   end
