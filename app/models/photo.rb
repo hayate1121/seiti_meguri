@@ -4,6 +4,7 @@ class Photo < ApplicationRecord
   belongs_to :user
   belongs_to :anime
   belongs_to :scene
+  has_many :photo_comments, dependent: :destroy
   
   def get_image(width, height)
     unless image.attached?

@@ -1,6 +1,7 @@
 class Admin::ScenesController < ApplicationController
   def new
     @scene = Scene.new
+    @scene.anime_id = params[:anime_id]
   end
   
   def create

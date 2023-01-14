@@ -40,7 +40,7 @@
       <%= link_to "編集する", edit_admin_anime_path %>
     </div>
     <div class="col">
-      <%= link_to "シーン追加", new_admin_scene_path %>
+      <%= link_to "シーン追加", new_admin_scene_path(anime_id: @anime.id) %>
     </div>
   </div>
 </div>

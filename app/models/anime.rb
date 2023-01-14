@@ -5,6 +5,7 @@ class Anime < ApplicationRecord
   has_many :scenes, dependent: :destroy
   has_many :stores, dependent: :destroy
   
+  
   def get_anime_image(width, height)
     unless anime_image.attached?
       file_path = Rails.root.join('app/assets/images/noimage-760x460.jpg')

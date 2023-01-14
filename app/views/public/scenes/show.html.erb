@@ -12,12 +12,12 @@
       <%= @scene.scene_name %>
     </div>
   </div>
+  
   <div class="row">
     <div class="col">
       新規投稿
     </div>
   </div>
-  
   <%= form_with model: @photo, url: photos_path do |f| %>
   <div class="row">
     <div class="col">
@@ -61,7 +61,9 @@
   <div class="row">
     <% @photos.each do |photo| %>
     <div class="col">
+      <%= link_to photo_path(photo.id) do %>
       <%= image_tag photo.get_image(100,100) %>
+      <% end %>
     </div>
     <% end %>
   </div>

@@ -32,4 +32,28 @@
     </div>
   </div>
   <% end %>
+  
+  <% @photo.photo_comments.each do |photo_comment| %>
+  <div class="row">
+    <div class="col">
+      <%= photo_comment.user.name %>
+    </div>
+    <div class="col">
+      <%= photo_comment.created_at.strftime('%Y/%m/%d') %><%= photo_comment.reply %>
+    </div>
+  </div>
+  <% end %>
+  
+  <%= form_with model: [@photo, @photo_comment] do |f| %>
+  <div class="row">
+    <div class="col">
+      <%= f.text_area :reply, rows: '5', placeholder: "コメントをここに" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= f.submit "送信する" %>
+    </div>
+  </div>
+  <% end %>
 </div>

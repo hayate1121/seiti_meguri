@@ -32,7 +32,9 @@ Rails.application.routes.draw do
     resources :animes
     resources :scenes
     resources :users
-    resources :photos
+    resources :photos do
+      resources :photo_comments, only: [:create]
+    end
     resources :stores
   end
   
