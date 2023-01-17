@@ -11,6 +11,19 @@
   </div>
   <div class="row">
     <div class="col">
+    <% if @photo.favorited_by?(current_user) %>
+      <%= link_to photo_favorites_path(@photo.id), method: :delete do %>
+        ♥<%= @photo.favorites.count %> いいね
+      <% end %>
+      <% else %>
+      <%= link_to photo_favorites_path(@photo.id), method: :post do %>
+        ♡<%= @photo.favorites.count %> いいね
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
       住所
     </div>
     <div class="col">
@@ -42,13 +55,13 @@
       <%= photo_comment.created_at.strftime('%Y/%m/%d') %><%= photo_comment.reply %>
     </div>
   </div>
-  <% if photo_comment.user == current_user %>
   <div class="row">
+    <% if photo_comment.user == current_user %>
     <div class="col">
       <%= link_to "削除", photo_photo_comment_path(photo_comment.photo, photo_comment), method: :delete %>
     </div>
+    <% end %>
   </div>
-  <% end %>
   <% end %>
   
   <%= form_with model: [@photo, @photo_comment] do |f| %>

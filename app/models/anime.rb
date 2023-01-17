@@ -14,4 +14,18 @@ class Anime < ApplicationRecord
     anime_image.variant(resize_to_limit: [width, height]).processed
   end
   
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @anime = Anime.where("title LIKE?","#{word}")
+    elsif search == "forward_match"
+      @anime = Anime.where("title LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @anime = Anime.where("title LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @anime = Anime.where("title LIKE?","%#{word}%")
+    else
+      @anime = Anime.all
+    end
+  end
+  
 end

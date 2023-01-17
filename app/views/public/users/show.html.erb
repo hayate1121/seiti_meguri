@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col">
       <h4>マイページ</h4>
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
       <table class="table">
         <tr>
           <th>ユーザー名</th>
@@ -23,8 +23,15 @@
     </div>
   </div>
   <div clss="row">
-    <div class="">
-      <%= link_to "編集する", edit_user_path, class: "btn btn-success" %>
+    <div class="col">
+      <%= link_to "編集する", edit_user_path %>
+    </div>
+    <div class="col">
+      <%= link_to "投稿一覧", photos_path(user_id: @user.id) %>
+    </div>
+    <div class="col">
+      <%= link_to "いいね一覧", favorite_path(user_id: @user.id) %>
     </div>
   </div>
+  
 </div>

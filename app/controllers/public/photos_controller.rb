@@ -4,7 +4,7 @@ class Public::PhotosController < ApplicationController
   end
   
   def index
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     @photos = @user.photos
   end
   
@@ -14,7 +14,8 @@ class Public::PhotosController < ApplicationController
   end
   
   def favorite
-    
+    favorites = Favorite.where(user_id: params[:user_id]).pluck(:photo_id)
+    @photos = Photo.find(favorites)
   end
   
   def create

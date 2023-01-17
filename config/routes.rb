@@ -29,11 +29,13 @@ Rails.application.routes.draw do
     get "/users/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
     patch "/users/invalid" => "users#invalid", as: "invalid"
     get "/photos/favorites" => "photos#favorite", as: "favorite"
+    get "/search" => "searches#search", as: "search"
     resources :animes
     resources :scenes
     resources :users
     resources :photos do
       resources :photo_comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
     resources :stores
   end

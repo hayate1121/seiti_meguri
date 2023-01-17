@@ -32,9 +32,9 @@ class Public::SessionsController < Devise::SessionsController
     #userのデータ内に同じメールアドレスがあるか確認.
     @user = User.find_by(email: params[:user][:email])
     #なければ処理終了
-    return if !@customer
+    return if !@user
     #メールアドレスがあった場合パスワードが同じかつ退会しているか確認.
-    if @customer.valid_password?(params[:user][:password]) && @user.is_deleted
+    if @user.valid_password?(params[:user][:password]) && @user.is_deleted
       #パスワードが同じかつ退会済みの場合
       redirect_to new_user_registration_path
     else

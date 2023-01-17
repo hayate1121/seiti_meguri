@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col">
       ユーザー一覧
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
       <table class="table">
         <thead>
           <tr>
@@ -19,9 +19,15 @@
         <tbody>
           <tr>
             <td><%= user.id %></td>
-            <td><%= user.name %></td>
+            <td><%= link_to user.name, admin_user_path(user.id) %></td>
             <td><%= user.email %></td>
-            <td><%= user.is_deleted %></td>
+            <td>
+              <% if user.is_deleted == false %>
+                有効
+              <% else %>
+                退会
+              <% end %>
+            </td>
           </tr>
         </tbody>
         <% end %>

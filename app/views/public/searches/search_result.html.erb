@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      検索結果
+    </div>
+  </div>
+  <% if @range == "ユーザー" %>
+    <% @users.each do |user| %>
+    <div class="row">
+      <div class="col">
+        <%= link_to user.name, user_path(user.id) %>
+      </div>
+    </div>
+    <% end %>
+  <% else %>
+    <% @animes.each do |book| %>
+    <div class="row">
+      <div class="col">
+        <%= link_to anime.title, anime_path(anime.id) %>
+      </div>
+      <div class="col">
+        <%= anime.spot %>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+</div>
