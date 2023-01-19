@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2023_01_15_123421) do
   create_table "scenes", force: :cascade do |t|
     t.integer "anime_id"
     t.string "scene_name"
+    t.string "scene_address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -97,7 +98,6 @@ ActiveRecord::Schema.define(version: 2023_01_15_123421) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "anime_id"
     t.string "store_name"
     t.text "store_introduction"
     t.string "store_address"

@@ -13,7 +13,7 @@
     </div>
     <% end %>
   <% else %>
-    <% @animes.each do |book| %>
+    <% @animes.each do |anime| %>
     <div class="row">
       <div class="col">
         <%= link_to anime.title, anime_path(anime.id) %>

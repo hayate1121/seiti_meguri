@@ -16,8 +16,18 @@
   </div>
 <% end %>
 
-<div>
-登録がまだの方は
-<%= link_to "こちら", new_user_registration_path %>
-<a>から新規登録をしてください。</a>
+  <div class="row">
+    <div class="col">
+      登録がまだの方は
+      <%= link_to "こちら", new_user_registration_path %>
+      <a>から新規登録をしてください。</a>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col">
+    店舗登録の方は
+    <%= link_to "こちら", new_store_registration_path %>
+    から新規登録してください。
+  </div>
 </div>

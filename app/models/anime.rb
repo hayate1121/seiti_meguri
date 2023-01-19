@@ -3,8 +3,6 @@ class Anime < ApplicationRecord
   
   has_many :photos, dependent: :destroy
   has_many :scenes, dependent: :destroy
-  has_many :stores, dependent: :destroy
-  
   
   def get_anime_image(width, height)
     unless anime_image.attached?

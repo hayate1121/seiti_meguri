@@ -28,6 +28,6 @@ class Admin::ScenesController < ApplicationController
   private
   
   def scene_params
-    params.require(:scene).permit(:scene_name, :anime_id)
+    params.require(:scene).permit(:scene_name, :anime_id, :scene_address)
   end
 end

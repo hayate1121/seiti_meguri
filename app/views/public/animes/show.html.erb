@@ -35,16 +35,4 @@
       <% end %>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-      付近の店舗一覧
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <% @stores.each do |store| %>
-        <%= link_to store.store_name, store_path(store.id) %>
-      <% end %>
-    </div>
-  </div>
 </div>

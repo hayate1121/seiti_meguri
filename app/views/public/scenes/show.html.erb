@@ -12,6 +12,11 @@
       <%= @scene.scene_name %>
     </div>
   </div>
+  <div class="row">
+    <div class="col">
+      
+    </div>
+  </div>
   
   <div class="row">
     <div class="col">
@@ -29,20 +34,13 @@
   </div>
   <div class="row">
     <div class="col">
-      <%= f.label "住所" %>
-    </div>
-    <div class="col">
-      <%= f.text_field :address %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
       <%= f.label "コメント" %>
     </div>
     <div class="col">
       <%= f.text_field :comment %>
     </div>
   </div>
+  <%= f.hidden_field :address, :value => @scene.scene_address %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.hidden_field :anime_id, :value => @scene.anime_id %>
   <%= f.hidden_field :scene_id, :value => @scene.id %>
@@ -62,7 +60,7 @@
     <% @photos.each do |photo| %>
     <div class="col">
       <%= link_to photo_path(photo.id) do %>
-      <%= image_tag photo.get_image(100,100) %>
+        <%= image_tag photo.get_image(100,100) %>
       <% end %>
     </div>
     <% end %>

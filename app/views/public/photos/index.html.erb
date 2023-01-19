@@ -1,14 +1,21 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col">
       <h5>投稿一覧</h5>
     </div>
   </div>
-  <% @photos.each do |photo| %>
   <div class="row">
-    <div class="">
-      <%= photo.address %>
+  <% @photos.each do |photo| %>
+    <div class="col">
+      <div class="row">
+        <%= link_to photo_path(photo.id) do %>
+          <%= image_tag photo.get_image(100,100) %>
+        <% end %>
+      </div>
+      <div class="row">
+        <%= photo.address %>
+      </div>
     </div>
-  </div>
   <% end %>
+  </div>
 </div>

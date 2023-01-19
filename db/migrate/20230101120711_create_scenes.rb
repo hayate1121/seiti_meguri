@@ -4,6 +4,7 @@ class CreateScenes < ActiveRecord::Migration[6.1]
       
       t.integer :anime_id
       t.string :scene_name
+      t.string :scene_address
       
       t.timestamps
     end
