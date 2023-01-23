@@ -6,23 +6,61 @@
   </div>
   <div class="row">
     <div class="col">
-      シーン名
+      <div id="map"></div>
+      <style>
+      #map {
+        height: 300px;
+        width: 500px;
+      }
+      </style>
+      <script>
+        let map
+        function initMap(){
+          geocoder = new google.maps.Geocoder()
+          
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: <%= @scene.latitude %>, lng:<%= @scene.longitude %>},
+            zoom: 15,
+          });
+          
+          marker = new google.maps.Marker({
+            position:  {lat: <%= @scene.latitude %>, lng:<%= @scene.longitude %>},
+            map: map
+          });
+        }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
     </div>
     <div class="col">
-      <%= @scene.scene_name %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      住所
-    </div>
-    <div class="col">
-      <%= @scene.scene_address %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <%= link_to "編集する", edit_admin_scene_path %>
+      <div class="row">
+        <div class="col">
+          <%= image_tag @scene.get_scene_image(300,500) %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          シーン名
+        </div>
+        <div class="col">
+          <%= @scene.scene_name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          住所
+        </div>
+        <div class="col">
+          <%= @scene.scene_address %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= link_to "編集する", edit_admin_scene_path %>
+        </div>
+        <div class="col">
+          <%= link_to "作品詳細に戻る", admin_anime_path(@scene.anime_id) %>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -32,7 +70,7 @@
   </div>
   <div class="row">
     <% @photos.each do |photo| %>
-    <div class="col">
+    <div class="col-2">
       <%= link_to admin_photo_path(photo.id) do %>
       <%= image_tag photo.get_image(100,100) %>
       <% end %>

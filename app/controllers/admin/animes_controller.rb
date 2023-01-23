@@ -12,6 +12,16 @@ class Admin::AnimesController < ApplicationController
   def show
     @anime = Anime.find(params[:id])
     @scenes = @anime.scenes
+    @lat = 0
+    @lng = 0
+    @count = 0
+    @scenes.each do |scene|
+      @lat += scene.latitude
+      @lng += scene.longitude
+      @count += 1
+    end
+    @latitude = @lat/@count
+    @longitude = @lng/@count
   end
   
   def edit

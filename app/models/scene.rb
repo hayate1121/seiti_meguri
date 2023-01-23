@@ -4,6 +4,9 @@ class Scene < ApplicationRecord
   has_many :photos, dependent: :destroy
   belongs_to :anime
   
+  geocoded_by :scene_address
+  after_validation :geocode, if: :scene_address_changed?
+  
   def get_scene_image(width, height)
     unless scene_image.attached?
       file_path = Rails.root.join('app/assets/images/noimage-760x460.jpg')
