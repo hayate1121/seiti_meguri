@@ -12,6 +12,7 @@ class Admin::AnimesController < ApplicationController
   def show
     @anime = Anime.find(params[:id])
     @scenes = @anime.scenes
+    @stores = Store.all
     @lat = 0
     @lng = 0
     @count = 0

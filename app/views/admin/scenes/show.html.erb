@@ -58,7 +58,7 @@
           <%= link_to "編集する", edit_admin_scene_path %>
         </div>
         <div class="col">
-          <%= link_to "作品詳細に戻る", admin_anime_path(@scene.anime_id) %>
+          <%= link_to "作品詳細に戻る", admin_anime_path(@scene.anime_id), data: {"turbolinks" => false} %>
         </div>
       </div>
     </div>
@@ -71,9 +71,18 @@
   <div class="row">
     <% @photos.each do |photo| %>
     <div class="col-2">
-      <%= link_to admin_photo_path(photo.id) do %>
-      <%= image_tag photo.get_image(100,100) %>
-      <% end %>
+      <div class="row">
+        <div class="col">
+          <%= link_to admin_photo_path(photo.id) do %>
+            <%= image_tag photo.get_image(100,100) %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= link_to photo.user.name, user_path(photo.user_id) %>
+        </div>
+      </div>
     </div>
     <% end %>
   </div>

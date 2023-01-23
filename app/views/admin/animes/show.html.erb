@@ -23,12 +23,35 @@
           
           map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: <%= @latitude %>, lng: <%= @longitude %>},
-            zoom: 13,
+            zoom: 12,
           });
           
           <% @scenes.each do |scene| %>
+            // const markerData = [{
+            //   "name": <--%= scene.scene_name %>,
+            //   "url": "/admin/scenes/<--%= scene.id %>"
+            // },];
+            
+            // const markerEvent => {
+            //   marker.addListener('click', () => {
+            //     infoWindow.open(map, marker);
+            //   });
+            // }
+            
             marker = new google.maps.Marker({
               position:  {lat: <%= scene.latitude %>, lng:<%= scene.longitude %>},
+              map: map
+            });
+            
+            // infoWindow = new google.maps.InfoWindow({
+            //   content: <a href="${markerData['url']}" target="_blank">${markerData['name']}</a>
+            // });
+            
+          <% end %>
+          
+          <% @stores.each do |store| %>
+            marker = new google.maps.Marker({
+              position:  {lat: <%= store.latitude %>, lng:<%= store.longitude %>},
               map: map
             });
           <% end %>
@@ -59,7 +82,7 @@
     </div>
     <div class="col">
       <% @scenes.each do |scene| %>
-        <%= link_to scene.scene_name, admin_scene_path(scene.id) %><br>
+        <%= link_to scene.scene_name, admin_scene_path(scene.id), data: {"turbolinks" => false} %><br>
       <% end %>
     </div>
   </div>

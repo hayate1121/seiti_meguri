@@ -3,7 +3,7 @@ class Admin::StoresController < ApplicationController
     @store = Store.find(params[:id])
   end
   
-  def inex
+  def index
     @stores = Store.all
   end
   
@@ -14,7 +14,7 @@ class Admin::StoresController < ApplicationController
   def update
     store = Store.find(params[:id])
     store.update(store_params)
-    redirect_to store_path
+    redirect_to admin_store_path
   end
   
   def destroy
@@ -26,6 +26,6 @@ class Admin::StoresController < ApplicationController
   private
   
   def store_params
-    params.require(:store).permit(:store_name, :store_introduction, :email, :store_address)
+    params.require(:store).permit(:store_name, :store_introduction, :email, :store_address, :latitude, :longitude)
   end
 end

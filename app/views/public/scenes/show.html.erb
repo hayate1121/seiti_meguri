@@ -34,6 +34,11 @@
     <div class="col">
       <div class="row">
         <div class="col">
+          <%= image_tag @scene.get_scene_image(300,500) %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
           シーン名
         </div>
         <div class="col">
@@ -48,7 +53,18 @@
           <%= @scene.scene_address %>
         </div>
       </div>
+      <div class="row">
+        <div class="col">
+          <%= link_to "作品詳細に戻る", anime_path(@scene.anime_id) %>
+        </div>
+      </div>
       
+  </div>
+  </div>
+  
+  
+  <div class="row">
+    <div class="col">
       <div class="row">
         <div class="col">
           新規投稿
@@ -82,21 +98,30 @@
       </div>
       <% end %>
     </div>
-  </div>
-  
-  
-  <div class="row">
     <div class="col">
-      投稿一覧
-    </div>
-  </div>
-  <div class="row">
-    <% @photos.each do |photo| %>
-    <div class="col">
-      <%= link_to photo_path(photo.id) do %>
-        <%= image_tag photo.get_image(100,100) %>
+      <div class="row">
+        <div class="col">
+          投稿一覧
+        </div>
+      </div>
+      <div class="row">
+      <% @photos.each do |photo| %>
+        <div class="col-3">
+          <div class="row">
+            <div class="col">
+              <%= link_to admin_photo_path(photo.id) do %>
+                <%= image_tag photo.get_image(100,100) %>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <%= link_to photo.user.name, user_path(photo.user_id) %>
+            </div>
+          </div>
+        </div>
       <% end %>
+      </div>
     </div>
-    <% end %>
   </div>
 </div>

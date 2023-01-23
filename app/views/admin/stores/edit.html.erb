@@ -4,7 +4,7 @@
       店舗情報編集
     </div>
   </div>
-  <%= form_with model: @store do |f| %>
+  <%= form_with model: @store, url: admin_store_path do |f| %>
   <div class="row">
     <div class="">
       <%= f.label "店舗名" %>
@@ -27,14 +27,6 @@
     </div>
     <div class="">
       <%= f.text_area :store_introduction %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="">
-      <%= f.label "関連アニメ" %>
-    </div>
-    <div class="">
-      <%= f.text_field :anime_id %>
     </div>
   </div>
   <div class="row">

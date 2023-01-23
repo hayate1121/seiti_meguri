@@ -17,7 +17,7 @@
         <tbody>
           <tr>
             <td><%= store.store_address %></td>
-            <td><%= store.store_name %></td>
+            <td><%= link_to store.store_name, admin_store_path(store.id), data: {"turbolinks" => false} %></td>
           </tr>
         </tbody>
         <% end %>

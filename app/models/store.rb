@@ -4,6 +4,9 @@ class Store < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
+  geocoded_by :store_address
+  after_validation :geocode, if: :store_address_changed?
+  
   has_one_attached :store_image
   
   def get_store_image(width, height)
