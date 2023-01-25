@@ -26,35 +26,51 @@
             zoom: 12,
           });
           
+          let i = 0
+          
+          const marker = []
+          
+          const infoWindow = []
+          
+          const markerEvent = (i) => {
+            marker[i].addListener('click', () => {
+              for (const j in marker) {
+                infoWindow[j].close(map, marker[j]);
+              }
+              infoWindow[i].open(map, marker[i]);
+            });
+          }
+          
           <% @scenes.each do |scene| %>
-            // const markerData = [{
-            //   "name": <--%= scene.scene_name %>,
-            //   "url": "/admin/scenes/<--%= scene.id %>"
-            // },];
-            
-            // const markerEvent => {
-            //   marker.addListener('click', () => {
-            //     infoWindow.open(map, marker);
-            //   });
-            // }
-            
-            marker = new google.maps.Marker({
+            marker[i] = new google.maps.Marker({
               position:  {lat: <%= scene.latitude %>, lng:<%= scene.longitude %>},
               map: map
             });
             
-            // infoWindow = new google.maps.InfoWindow({
-            //   content: <a href="${markerData['url']}" target="_blank">${markerData['name']}</a>
-            // });
+            infoWindow[i] = new google.maps.InfoWindow({
+              content: `<%= link_to scene.scene_name, admin_scene_path(scene.id), data: {"turbolinks" => false} %>`
+            });
             
+            markerEvent(i);
+            
+            i++;
           <% end %>
           
           <% @stores.each do |store| %>
-            marker = new google.maps.Marker({
+            marker[i] = new google.maps.Marker({
               position:  {lat: <%= store.latitude %>, lng:<%= store.longitude %>},
               map: map
             });
+            
+            infoWindow[i] = new google.maps.InfoWindow({
+              content: `<%= link_to store.store_name, admin_store_path(store.id), data: {"turbolinks" => false} %>`
+            });
+            
+            markerEvent(i);
+            
+            i++;
           <% end %>
+          
         }
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>

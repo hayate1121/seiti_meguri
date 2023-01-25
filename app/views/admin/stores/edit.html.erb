@@ -1,36 +1,44 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col">
       店舗情報編集
     </div>
   </div>
   <%= form_with model: @store, url: admin_store_path do |f| %>
   <div class="row">
-    <div class="">
+    <div class="col">
+      <%= f.label "画像" %>
+    </div>
+    <div class="col">
+      <%= f.file_field :store_image, accept: "image/*" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
       <%= f.label "店舗名" %>
     </div>
-    <div class="">
+    <div class="col">
       <%= f.text_field :store_name %>
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
       <%= f.label "住所" %>
     </div>
-    <div class="">
+    <div class="col">
       <%= f.text_field :store_address %>
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
       <%= f.label "店舗紹介" %>
     </div>
-    <div class="">
+    <div class="col">
       <%= f.text_area :store_introduction %>
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
       <%= f.submit "保存する" %>
     </div>
   </div>

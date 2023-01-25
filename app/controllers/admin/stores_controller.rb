@@ -26,6 +26,6 @@ class Admin::StoresController < ApplicationController
   private
   
   def store_params
-    params.require(:store).permit(:store_name, :store_introduction, :email, :store_address, :latitude, :longitude)
+    params.require(:store).permit(:store_name, :store_introduction, :email, :store_address, :store_image, :latitude, :longitude)
   end
 end
