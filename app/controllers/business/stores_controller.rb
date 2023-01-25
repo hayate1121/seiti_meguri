@@ -13,9 +13,15 @@ class Business::StoresController < ApplicationController
     redirect_to business_store_path
   end
   
+  def destroy
+    store = Store.find(params[:id])
+    store.destroy
+    redirect_to stores_path
+  end
+  
   private
   
   def store_params
-    params.require(:store).permit(:store_name, :store_introduction, :email, :store_address)
+    params.require(:store).permit(:store_name, :store_introduction, :email, :store_address, :store_image, :latitude, :longitude)
   end
 end

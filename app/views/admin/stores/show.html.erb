@@ -65,6 +65,9 @@
         <div class="col">
           <%= link_to "編集する", edit_admin_store_path %>
         </div>
+        <div class="col">
+          <%= link_to "削除する", admin_store_path(@store.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        </div>
       </div>
     </div>
   </div>
