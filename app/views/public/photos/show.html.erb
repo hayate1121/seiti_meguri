@@ -6,74 +6,75 @@
   </div>
   <div class="row">
     <div class="col">
-      <%= image_tag @photo.get_image(100,100) %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-    <% if @photo.favorited_by?(current_user) %>
-      <%= link_to photo_favorites_path(@photo.id), method: :delete do %>
-        ♥<%= @photo.favorites.count %> いいね
+      <div class="row">
+        <div class="col">
+          <%= image_tag @photo.get_image(400,400) %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2">
+          住所
+        </div>
+        <div class="col-10">
+          <%= @photo.address %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2">
+          コメント
+        </div>
+        <div class="col-10">
+          <%= @photo.comment %>
+        </div>
+      </div>
+      <% if @photo.user_id == current_user.id %>
+      <div class="row">
+        <div class="col">
+          <%= link_to "編集する", edit_photo_path %>
+        </div>
+      </div>
       <% end %>
-      <% else %>
-      <%= link_to photo_favorites_path(@photo.id), method: :post do %>
-        ♡<%= @photo.favorites.count %> いいね
+      <div class="row">
+        <div class="col">
+        <% if @photo.favorited_by?(current_user) %>
+          <%= link_to photo_favorites_path(@photo.id), method: :delete do %>
+            ♥<%= @photo.favorites.count %> いいね
+          <% end %>
+        <% else %>
+          <%= link_to photo_favorites_path(@photo.id), method: :post do %>
+            ♡<%= @photo.favorites.count %> いいね
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+      
+    <div class="col">
+      <%= form_with model: [@photo, @photo_comment] do |f| %>
+      <div class="row">
+        <div class="col">
+          <%= f.text_area :reply, rows: '5', cols: '60', placeholder: "コメントをここに" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= f.submit "送信する" %>
+        </div>
+      </div>
       <% end %>
-    <% end %>
+      <% @photo.photo_comments.each do |photo_comment| %>
+      <div class="row">
+        <div class="col">
+          <%= photo_comment.created_at.strftime('%Y/%m/%d') %><%= photo_comment.reply %>
+        </div>
+        <div class="col">
+          <%= photo_comment.user.name %>
+        <% if photo_comment.user == current_user %>
+          <%= link_to "削除", photo_photo_comment_path(photo_comment.photo, photo_comment), method: :delete %>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-      住所
-    </div>
-    <div class="col">
-      <%= @photo.address %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      コメント
-    </div>
-    <div class="col">
-      <%= @photo.comment %>
-    </div>
-  </div>
-  <% if @photo.user_id == current_user.id %>
-  <div class="row">
-    <div class="col">
-      <%= link_to "編集する", edit_photo_path %>
-    </div>
-  </div>
-  <% end %>
-  
-  <% @photo.photo_comments.each do |photo_comment| %>
-  <div class="row">
-    <div class="col">
-      <%= photo_comment.user.name %>
-    </div>
-    <div class="col">
-      <%= photo_comment.created_at.strftime('%Y/%m/%d') %><%= photo_comment.reply %>
-    </div>
-  </div>
-  <div class="row">
-    <% if photo_comment.user == current_user %>
-    <div class="col">
-      <%= link_to "削除", photo_photo_comment_path(photo_comment.photo, photo_comment), method: :delete %>
-    </div>
-    <% end %>
-  </div>
-  <% end %>
-  
-  <%= form_with model: [@photo, @photo_comment] do |f| %>
-  <div class="row">
-    <div class="col">
-      <%= f.text_area :reply, rows: '5', placeholder: "コメントをここに" %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <%= f.submit "送信する" %>
-    </div>
-  </div>
-  <% end %>
 </div>
