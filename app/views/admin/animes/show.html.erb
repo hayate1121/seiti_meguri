@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="">
-      <h5>作品詳細</h5>
+    <div class="col">
+      <h4>作品詳細</h4>
     </div>
   </div>
-  <div class="row">
+  <div class="row mt-3">
     <div class="col">
-      <%= image_tag @anime.get_anime_image(300,500) %>
+      <%= image_tag @anime.get_anime_image(400,500) %>
     </div>
     <div class="col">
       <div id="map"></div>
@@ -76,12 +76,22 @@
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
     </div>
   </div>
-  <div class="row">
+  <div class="row mt-4">
     <div class="col">
       作品名
     </div>
     <div class="col">
       <%= @anime.title %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      ジャンル
+    </div>
+    <div class="col">
+      <% @anime.tags.each do |tag| %>
+        <%= tag.tag_name %>
+      <% end %>
     </div>
   </div>
   <div class="row">

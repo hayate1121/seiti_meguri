@@ -13,16 +13,18 @@ class Admin::AnimesController < ApplicationController
     @anime = Anime.find(params[:id])
     @scenes = @anime.scenes
     @stores = Store.all
-    @lat = 0
-    @lng = 0
-    @count = 0
-    @scenes.each do |scene|
-      @lat += scene.latitude
-      @lng += scene.longitude
-      @count += 1
+    if @scenes.present?
+      @lat = 0
+      @lng = 0
+      @count = 0
+      @scenes.each do |scene|
+        @lat += scene.latitude
+        @lng += scene.longitude
+        @count += 1
+      end
+      @latitude = @lat/@count
+      @longitude = @lng/@count
     end
-    @latitude = @lat/@count
-    @longitude = @lng/@count
   end
   
   def edit
@@ -37,13 +39,13 @@ class Admin::AnimesController < ApplicationController
   end
   
   def index
-    @animes = Anime.all
+    @animes = params[:tag_id].present? ? Tag.find(params[:tag_id]).animes : Anime.all
   end
   
   private
   
   def anime_params
-    params.require(:anime).permit(:title, :spot, :anime_image)
+    params.require(:anime).permit(:title, :spot, :anime_image, tag_ids: [])
   end
   
 end

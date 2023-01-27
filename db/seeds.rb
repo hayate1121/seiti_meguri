@@ -9,3 +9,12 @@ Admin.create!(
   email: "admin@gmail.com",
   password: "password"
 )
+
+Tag.create([
+    { tag_name: 'バトル' },
+    { tag_name: '恋愛' },
+    { tag_name: '日常'},
+    { tag_name: 'SF'},
+    { tag_name: 'スポーツ'},
+    { tag_name: 'ロボット'}
+    ])

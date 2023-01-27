@@ -7,6 +7,14 @@
   <%= form_with model: @scene, url: admin_scene_path do |f| %>
   <div class="row">
     <div class="col">
+      <%= f.label "画像" %>
+    </div>
+    <div class="col">
+      <%= f.file_field :scene_image, accept: "image/*" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
       <%= f.label "シーン名" %>
     </div>
     <div class="col">
@@ -18,7 +26,7 @@
       <%= f.label "住所" %>
     </div>
     <div class="col">
-      <%= f.text_field :scene_address %>
+      <%= f.text_area :scene_address, cols: 50 %>
     </div>
   </div>
   

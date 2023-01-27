@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col">
       <h5>作品編集</h5>
     </div>
   </div>
@@ -10,7 +10,7 @@
       <%= f.label "画像" %>
     </div>
     <div class="col">
-      <%= f.file_field :ainime_image, accept: "image/*" %>
+      <%= f.file_field :anime_image, accept: "image/*" %>
     </div>
   </div>
   <div class="row">
@@ -30,7 +30,22 @@
     </div>
   </div>
   <div class="row">
-    <div class="">
+    <div class="col">
+      <%= f.label "ジャンル" %>
+    </div>
+    <div class="col">
+      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
+      <div>
+        <%= tag.label do %>
+          <%= tag.check_box %>
+          <%= tag.text %>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
       <%= f.submit "保存する" %>
     </div>
   </div>

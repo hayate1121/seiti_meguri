@@ -10,12 +10,28 @@
     </div>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col-2">
+      ジャンル検索
+    </div>
+    <div class="col-10">
+      <%= form_tag admin_animes_path, method: :get, class: 'boards__searchForm' do %>
+        <%= select_tag :tag_id,
+                       options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),
+                       {
+                         prompt: '全てを表示',
+                         onchange: 'submit(this.form);'
+                       }
+        %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8">
       <table class="table">
         <thead>
           <tr>
-            <th>作品名</th>
-            <th>住所</th>
+            <th class="col-6">作品名</th>
+            <th class="col-6">舞台</th>
           </tr>
         </thead>
         <% @animes.each do |anime| %>
