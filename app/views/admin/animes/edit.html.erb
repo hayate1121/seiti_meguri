@@ -1,53 +1,59 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <h5>作品編集</h5>
-    </div>
-  </div>
-  <%= form_with model: @anime, url: admin_anime_path do |f| %>
-  <div class="row">
-    <div class="col">
-      <%= f.label "画像" %>
-    </div>
-    <div class="col">
-      <%= f.file_field :anime_image, accept: "image/*" %>
+  <div class="row mt-3">
+    <div class="col ml-5">
+      <h4>作品編集</h4>
     </div>
   </div>
   <div class="row">
-    <div class="col">
-      <%= f.label "作品名" %>
-    </div>
-    <div class="col">
-      <%= f.text_field :title %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <%= f.label "舞台" %>
-    </div>
-    <div class="col">
-      <%= f.text_field :spot %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <%= f.label "ジャンル" %>
-    </div>
-    <div class="col">
-      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
-      <div>
-        <%= tag.label do %>
-          <%= tag.check_box %>
-          <%= tag.text %>
-        <% end %>
+    <div class="col-2"></div>
+    <div class="col-10">
+      <%= form_with model: @anime, url: admin_anime_path do |f| %>
+      <div class="row mt-5">
+        <div class="col-3">
+          <%= f.label "画像" %>
+        </div>
+        <div class="col-9">
+          <%= f.file_field :anime_image, accept: "image/*" %>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-3">
+          <%= f.label "作品名" %>
+        </div>
+        <div class="col-9">
+          <%= f.text_field :title %>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-3">
+          <%= f.label "舞台" %>
+        </div>
+        <div class="col-9">
+          <%= f.text_field :spot %>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-3">
+          <%= f.label "ジャンル" %>
+        </div>
+        <div class="col-9">
+          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
+          <div>
+            <%= tag.label do %>
+              <%= tag.check_box %>
+              <%= tag.text %>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-3"></div>
+        <div class="col-9">
+          <%= f.submit "保存する", class: "btn btn-success" %>
+        </div>
       </div>
       <% end %>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-      <%= f.submit "保存する" %>
-    </div>
-  </div>
-  <% end %>
 </div>

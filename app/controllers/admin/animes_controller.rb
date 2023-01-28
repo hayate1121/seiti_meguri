@@ -39,7 +39,7 @@ class Admin::AnimesController < ApplicationController
   end
   
   def index
-    @animes = params[:tag_id].present? ? Tag.find(params[:tag_id]).animes : Anime.all
+    @animes = params[:tag_id].present? ? Tag.find(params[:tag_id]).animes.order("title") : Anime.order("title").all
   end
   
   private
