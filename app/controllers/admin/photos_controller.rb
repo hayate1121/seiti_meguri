@@ -7,10 +7,11 @@ class Admin::PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
   end
   
-  def update
+  def destroy
     photo = Photo.find(params[:id])
-    photo.update(photo_params)
-    redirect_to photo_path(photo.id)
+    anime = photo.anime
+    photo.destroy
+    redirect_to admin_anime_path(anime.id)
   end
   
   private
