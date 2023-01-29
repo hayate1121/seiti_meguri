@@ -1,43 +1,53 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      投稿詳細
+  <div class="row mt-3">
+    <div class="col ml-5">
+      <h4>投稿詳細</h4>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-      <%= image_tag @photo.get_image(300,300) %>
+  <div class="row mt-3">
+    <div class="col-5">
+      <div class="row">
+        <div class="col">
+          <%= image_tag @photo.get_image(300,500) %>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-3">
+          住所
+        </div>
+        <div class="col-9">
+          <%= @photo.address %>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-3">
+          コメント
+        </div>
+        <div class="col-9">
+          <%= @photo.comment %>
+        </div>
+      </div>
+       <div class="row mt-3">
+        <div class="col-3">
+          投稿者
+        </div>
+        <div class="col-9">
+          <%= link_to @photo.user.name, admin_user_path(@photo.user.id) %>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 ml-5">
+      <% @photo.photo_comments.each do |photo_comment| %>
+      <div class="row">
+        <div class="col">
+          <%= photo_comment.created_at.strftime('%Y/%m/%d') %><%= photo_comment.reply %>
+        </div>
+        <div class="col">
+          <%= photo_comment.user.name %>
+          <%= link_to "コメント削除", admin_photo_photo_comment_path(photo_comment.photo, photo_comment), class: "ml-2", method: :delete %>
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-      住所
-    </div>
-    <div class="col">
-      <%= @photo.address %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      コメント
-    </div>
-    <div class="col">
-      <%= @photo.comment %>
-    </div>
-  </div>
-   <% @photo.photo_comments.each do |photo_comment| %>
-  <div class="row">
-    <div class="col">
-      <%= photo_comment.user.name %>
-    </div>
-    <div class="col">
-      <%= photo_comment.created_at.strftime('%Y/%m/%d') %><%= photo_comment.reply %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <%= link_to "削除", admin_photo_photo_comment_path(photo_comment.photo, photo_comment), method: :delete %>
-    </div>
-  </div>
-  <% end %>
 </div>

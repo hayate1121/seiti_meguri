@@ -69,10 +69,10 @@
         </div>
         <div class="col">
           <%= photo_comment.user.name %>
-        <% if photo_comment.user == current_user %>
-          <%= link_to "削除", photo_photo_comment_path(photo_comment.photo, photo_comment), method: :delete %>
+          <% if photo_comment.user == current_user %>
+            <%= link_to "コメント削除", photo_photo_comment_path(photo_comment.photo, photo_comment), class: "ml-2", method: :delete %>
+          <% end %>
         </div>
-        <% end %>
       </div>
       <% end %>
     </div>

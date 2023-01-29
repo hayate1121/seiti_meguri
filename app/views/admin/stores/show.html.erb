@@ -1,10 +1,10 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      店舗詳細
+  <div class="row mt-3">
+    <div class="col ml-5">
+      <h4>店舗詳細</h4>
     </div>
   </div>
-  <div class="row">
+  <div class="row mt-3">
     <div class="col">
       <div id="map"></div>
       <style>
@@ -32,42 +32,42 @@
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
     </div>
     <div class="col">
-      <div class="row">
+      <div class="row mt-3">
         <div class="col">
-          <%= image_tag @store.get_store_image(200,300) %>
+          <%= image_tag @store.get_store_image(300,500) %>
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-          店舗名
-        </div>
-        <div class="col">
-          <%= @store.store_name %>
-        </div>
+    </div>
+  </div>
+    <div class="row mt-4">
+      <div class="col-2">
+        店舗名
       </div>
-      <div class="row">
-        <div class="col">
-          住所
-        </div>
-        <div class="col">
-          <%= @store.store_address %>
-        </div>
+      <div class="col-6">
+        <%= @store.store_name %>
       </div>
-      <div class="row">
-        <div class="col">
-          店舗紹介
-        </div>
-        <div class="col">
-          <%= @store.store_introduction %>
-        </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-2">
+        住所
       </div>
-      <div class="row">
-        <div class="col">
-          <%= link_to "編集する", edit_admin_store_path %>
-        </div>
-        <div class="col">
-          <%= link_to "削除する", admin_store_path(@store.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-        </div>
+      <div class="col-6">
+        <%= @store.store_address %>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-2">
+        店舗紹介
+      </div>
+      <div class="col-6">
+        <%= @store.store_introduction %>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-2"></div>
+      <div class="col">
+        <%= link_to "編集する", edit_admin_store_path, class: "btn btn-success mr-2" %>
+        <%= link_to "削除する", admin_store_path(@store.id), class: "btn btn-danger ml-2", method: :delete, "data-confirm" => "本当に削除しますか？" %>
       </div>
     </div>
   </div>

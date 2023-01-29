@@ -80,7 +80,7 @@
     </div>
   </div>
   
-  <div class="row mt-2">
+  <div class="row mt-4">
     <div class="col-4">
       作品名
     </div>
@@ -124,7 +124,7 @@
     </div>
     <div class="col-8">
       <% @scenes.each do |scene| %>
-        <%= link_to scene.scene_name, admin_scene_path(scene.id), data: {"turbolinks" => false} %><br>
+        ・<%= link_to scene.scene_name, admin_scene_path(scene.id), data: {"turbolinks" => false} %><br>
       <% end %>
     </div>
   </div>
