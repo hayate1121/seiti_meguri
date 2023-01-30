@@ -1,54 +1,60 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      店舗情報編集
-    </div>
-  </div>
-  <%= form_with model: @store, url: business_store_path do |f| %>
-  <div class="row">
-    <div class="col">
-      <%= f.label "画像" %>
-    </div>
-    <div class="col">
-      <%= f.file_field :store_image, accept: "image/*" %>
+  <div class="row mt-3">
+    <div class="col ml-5">
+      <h4>店舗情報編集</h4>
     </div>
   </div>
   <div class="row">
-    <div class="col">
-      <%= f.label "店舗名" %>
-    </div>
-    <div class="col">
-      <%= f.text_field :store_name %>
+    <div class="col-2"></div>
+    <div class="col-10">
+      <%= form_with model: @store, url: business_store_path do |f| %>
+      <div class="row mt-5">
+        <div class="col-3">
+          <%= f.label "画像" %>
+        </div>
+        <div class="col-9">
+          <%= f.file_field :store_image, accept: "image/*" %>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-3">
+          <%= f.label "店舗名" %>
+        </div>
+        <div class="col-9">
+          <%= f.text_field :store_name %>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-3">
+          <%= f.label "店舗紹介" %>
+        </div>
+        <div class="col-9">
+          <%= f.text_area :store_introduction %>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-3">
+          <%= f.label "住所" %>
+        </div>
+        <div class="col-9">
+          <%= f.text_field :store_address %>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-3">
+          <%= f.label "メールアドレス" %>
+        </div>
+        <div class="col-9">
+          <%= f.text_field :email %>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-3"></div>
+        <div class="col-9">
+          <%= f.submit "保存する", class: "btn btn-success" %>
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-      <%= f.label "店舗紹介" %>
-    </div>
-    <div class="col">
-      <%= f.text_area :store_introduction %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <%= f.label "住所" %>
-    </div>
-    <div class="col">
-      <%= f.text_field :store_address %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <%= f.label "メールアドレス" %>
-    </div>
-    <div class="col">
-      <%= f.text_field :email %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <%= f.submit "保存する" %>
-    </div>
-  </div>
-  <% end %>
 </div>
