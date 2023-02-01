@@ -1,42 +1,57 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
+  <div class="row mt-5">
+    <div class="col text-center">
       <h4>ログイン</h4>
     </div>
   </div>
-
-
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password, "パスワード" %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
-
   <div class="row">
+    <div class="col-4"></div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="col">
-      登録がまだの方は
-      <%= link_to "こちら", new_user_registration_path %>
-      <a>から新規登録をしてください。</a>
+      <div class="row mt-5">
+        <div class="col">
+          <%= f.label :email, "メールアドレス" %>
+        </div>
+        <div class="col">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+      </div>
+    
+      <div class="row mt-4">
+        <div class="col">
+          <%= f.label :password, "パスワード" %>
+        </div>
+        <div class="col">
+          <%= f.password_field :password, autocomplete: "current-password" %>
+        </div>
+      </div>
+    
+      <div class="row mt-4">
+        <div class="col-4 mx-auto">
+          <%= f.submit "ログイン", class: "btn btn-info" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    
+  </div>
+  
+  <div class="row">
+    <div class="col text-center">
+      <div class="row mt-4">
+        <div class="col">
+          登録がまだの方は
+          <%= link_to "こちら", new_user_registration_path %>
+          <a>から新規登録をしてください。</a>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col">
+          店舗ログインの方は
+          <%= link_to "こちら", new_store_session_path %>
+          から新規登録してください。
+        </div>
+      </div>
     </div>
   </div>
-
-<div class="row">
-  <div class="col">
-    店舗登録の方は
-    <%= link_to "こちら", new_store_registration_path %>
-    から新規登録してください。
-  </div>
-</div>
-
 </div>

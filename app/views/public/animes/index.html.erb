@@ -1,16 +1,35 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      作品一覧
+  <div class="row mt-3">
+    <div class="col ml-5">
+      <h4>作品一覧</h4>
     </div>
   </div>
+  
   <div class="row">
-    <div class="col">
-      <table class="table">
-        <thead>
+    <div class="col-2"></div>
+    <div class="col-2">
+      ジャンル選択
+    </div>
+    <div class="col-2">
+      <%= form_tag animes_path, method: :get, class: 'boards__searchForm' do %>
+        <%= select_tag :tag_id,
+                       options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),
+                       {
+                         prompt: '全てを表示',
+                         onchange: 'submit(this.form);'
+                       }
+        %>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="row mt-3">
+    <div class="col-8 mx-auto">
+      <table class="table table-bordered">
+        <thead class="thead-light">
           <tr>
-            <th>作品名</th>
-            <th>住所</th>
+            <th class="col-6">作品名</th>
+            <th class="col-6">舞台</th>
           </tr>
         </thead>
         <% @animes.each do |anime| %>

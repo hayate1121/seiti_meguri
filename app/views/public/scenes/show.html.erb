@@ -4,8 +4,9 @@
       <h4>シーン詳細</h4>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
+  
+  <div class="row mt-3">
+    <div class="col-6">
       <div id="map"></div>
       <style>
       #map {
@@ -31,68 +32,67 @@
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
     </div>
-    <div class="col">
+    <div class="col-6">
       <div class="row">
         <div class="col">
-          <%= image_tag @scene.get_scene_image(300,500) %>
+          <%= image_tag @scene.get_scene_image(250,400) %>
         </div>
       </div>
       <div class="row">
-        <div class="col">
+        <div class="col-3">
           シーン名
         </div>
-        <div class="col">
+        <div class="col-9">
           <%= @scene.scene_name %>
         </div>
       </div>
       <div class="row">
-        <div class="col">
+        <div class="col-3">
           住所
         </div>
-        <div class="col">
+        <div class="col-9">
           <%= @scene.scene_address %>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <%= link_to "作品詳細に戻る", anime_path(@scene.anime_id) %>
+          <%= link_to "<<作品詳細に戻る", anime_path(@scene.anime_id), data: {"turbolinks" => false} %>
         </div>
       </div>
-      
-  </div>
+    </div>
   </div>
   
-  
-  <div class="row">
-    <div class="col">
+  <div class="row mt-2">
+    <div class="col-6">
       <div class="row">
         <div class="col">
           新規投稿
         </div>
       </div>
       <%= form_with model: @photo, url: photos_path do |f| %>
-      <div class="row">
-        <div class="col">
+      <div class="row mt-1">
+        <div class="col-3">
           <%= f.label "写真" %>
         </div>
-        <div class="col">
+        <div class="col-9">
           <%= f.file_field :image, accept: "image/*" %>
         </div>
       </div>
-      <div class="row">
-        <div class="col">
+      <div class="row mt-1">
+        <div class="col-3">
           <%= f.label "コメント" %>
         </div>
-        <div class="col">
-          <%= f.text_field :comment %>
+        <div class="col-9">
+          <%= f.text_area :comment, rows: 3, cols: 40 %>
         </div>
       </div>
       <%= f.hidden_field :address, :value => @scene.scene_address %>
       <%= f.hidden_field :user_id, :value => current_user.id %>
       <%= f.hidden_field :anime_id, :value => @scene.anime_id %>
       <%= f.hidden_field :scene_id, :value => @scene.id %>
-      <div class="row">
-        <div class="col">
+      <div class="row mt-1">
+        <div class="col-3"></div>
+        <div class="col-9">
           <%= f.submit "投稿する" %>
         </div>
       </div>

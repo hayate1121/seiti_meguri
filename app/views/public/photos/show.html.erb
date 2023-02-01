@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      投稿詳細
+  <div class="row mt-3">
+    <div class="col ml-5">
+      <h4>投稿詳細</h4>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
+  <div class="row mt-3">
+    <div class="col-6">
       <div class="row">
         <div class="col">
           <%= image_tag @photo.get_image(400,400) %>
@@ -49,14 +49,14 @@
       </div>
     </div>
       
-    <div class="col">
+    <div class="col-6">
       <%= form_with model: [@photo, @photo_comment] do |f| %>
       <div class="row">
         <div class="col">
           <%= f.text_area :reply, rows: '5', cols: '60', placeholder: "コメントをここに" %>
         </div>
       </div>
-      <div class="row">
+      <div class="row mt-2">
         <div class="col">
           <%= f.submit "送信する" %>
         </div>
