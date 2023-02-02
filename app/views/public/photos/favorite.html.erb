@@ -1,16 +1,27 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      いいね一覧
+  <div class="row mt-3">
+    <div class="col ml-5">
+      <h4><%= @user.name %>のいいね一覧</h4>
     </div>
   </div>
-  <div class="row">
-    <% @photos.each do |photo| %>
-    <div class="col">
-      <%= link_to photo_path(photo.id) do %>
-      <%= image_tag photo.get_image(100,100) %>
+  <div class="row mt-2">
+    <div class="col-1"></div>
+    <div class="col-11">
+      <% @photos.each do |photo| %>
+      <div class="row mt-2">
+        <div class="col-4">
+          <%= link_to photo_path(photo.id) do %>
+            <%= image_tag photo.get_image(200,200) %>
+          <% end %>
+        </div>
+        <div class="col-2">
+          <%= link_to photo.anime.title, anime_path(photo.anime.id) %>
+        </div>
+        <div class="col-6">
+          <%= link_to photo.scene.scene_name, scene_path(photo.scene.id) %>
+        </div>
+      </div>
       <% end %>
     </div>
-    <% end %>
   </div>
 </div>

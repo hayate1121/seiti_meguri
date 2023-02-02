@@ -14,6 +14,7 @@ class Public::PhotosController < ApplicationController
   end
   
   def favorite
+    @user = User.find(params[:user_id])
     favorites = Favorite.where(user_id: params[:user_id]).pluck(:photo_id)
     @photos = Photo.find(favorites)
   end

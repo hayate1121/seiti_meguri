@@ -1,36 +1,37 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
+  <div class="row mt-3">
+    <div class="col ml-5">
       <h4>マイページ</h4>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-      <table class="table">
-        <tr>
-          <th>ユーザー名</th>
-          <td><%= @user.name %></td>
-        </tr>
-        <tr>
-          <th>自己紹介文</th>
-          <td><%= @user.introduction %></td>
-        </tr>
-        <tr>
-          <th>メールアドレス</th>
-          <td><%= @user.email %></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-  <div clss="row">
-    <div class="col">
-      <%= link_to "編集する", edit_user_path %>
-    </div>
-    <div class="col">
-      <%= link_to "投稿一覧", photos_path(user_id: @user.id) %>
-    </div>
-    <div class="col">
-      <%= link_to "いいね一覧", favorite_path(user_id: @user.id) %>
+  <div class="row mt-3">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <div class="row">
+        <div class="col">
+          <table class="table table-bordered">
+            <tr class="thead-light">
+              <th class="col-2">ユーザー名</th>
+              <td class="col-6"><%= @user.name %></td>
+            </tr>
+            <tr class="thead-light">
+              <th class="col-2">自己紹介文</th>
+              <td class="col-6"><%= @user.introduction %></td>
+            </tr>
+            <tr class="thead-light">
+              <th class="col-2">メールアドレス</th>
+              <td class="col-6"><%= @user.email %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div clss="row mt-3">
+        <div class="col-8">
+          <%= link_to "編集する", edit_user_path, class: "btn btn-primary mr-3" %>
+          <%= link_to "投稿一覧", photos_path(user_id: @user.id), class: "btn btn-primary mx-3" %>
+          <%= link_to "いいね一覧", favorite_path(user_id: @user.id), class: "btn btn-primary ml-3" %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

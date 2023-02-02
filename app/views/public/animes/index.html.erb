@@ -36,7 +36,7 @@
         <tbody>
           <tr>
             <td>
-              <%= link_to anime.title, anime_path(anime.id) %>
+              <%= link_to anime.title, anime_path(anime.id), data: {"turbolinks" => false} %>
             </td>
             <td>
               <%= anime.spot %>
