@@ -1,41 +1,47 @@
 <div class="container">
-  <div class="row">
-    <div class="">
+  <div class="row mt-3">
+    <div class="col ml-5">
       <h4>ユーザー情報編集</h4>
     </div>
   </div>
-  <%= form_with model: @user do |f| %>
   <div class="row">
-    <div class="">
-      <%= f.label "ユーザー名" %>
-    </div>
-    <div class="">
-      <%= f.text_field :name %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="">
-      <%= f.label "自己紹介文" %>
-    </div>
-    <div class="">
-      <%= f.text_area :introduction %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="">
-      <%= f.label "メールアドレス" %>
-    </div>
-    <div class="">
-      <%= f.text_area :email %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="">
-      <%= f.submit "保存する", class: "btn btn-success" %>
-    </div>
-  <% end %>
-    <div class="">
-      <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger" %>
+    <div class="col-2"></div>
+    <div class="col-10">
+      <%= form_with model: @user do |f| %>
+      <div class="row mt-4">
+        <div class="col-3">
+          <%= f.label "ユーザー名" %>
+        </div>
+        <div class="col-9">
+          <%= f.text_field :name %>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-3">
+          <%= f.label "自己紹介文" %>
+        </div>
+        <div class="col-9">
+          <%= f.text_area :introduction, rows: 3, cols: 40 %>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-3">
+          <%= f.label "メールアドレス" %>
+        </div>
+        <div class="col-9">
+          <%= f.text_field :email %>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-2"></div>
+        <div class="col-2">
+          <%= f.submit "保存する", class: "btn btn-success" %>
+        </div>
+        <div class="col-2">
+          <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger" %>
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>
