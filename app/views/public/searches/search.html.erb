@@ -1,27 +1,52 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      検索結果
+  <div class="row mt-5">
+    <div class="col text-center">
+      <h4>検索結果</h4>
     </div>
   </div>
-  <% if @range == "ユーザー" %>
-    <% @users.each do |user| %>
-    <div class="row">
-      <div class="col">
-        <%= link_to user.name, user_path(user.id) %>
-      </div>
+  <div class="row mt-5">
+    <% if @range == "ユーザー" %>
+    <div class="col-4 mx-auto">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th class="col-6">ユーザー名</th>
+          </tr>
+        </thead>
+        <% @users.each do |user| %>
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to user.name, user_path(user.id) %>
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+    <% else %>
+    <div class="col-8 mx-auto">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th class="col-6">作品名</th>
+            <th class="col-6">舞台</th>
+          </tr>
+        </thead>
+        <% @animes.each do |anime| %>
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to anime.title, anime_path(anime.id), data: {"turbolinks" => false} %>
+            </td>
+            <td>
+              <%= anime.spot %>
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
     </div>
     <% end %>
-  <% else %>
-    <% @animes.each do |anime| %>
-    <div class="row">
-      <div class="col">
-        <%= link_to anime.title, anime_path(anime.id) %>
-      </div>
-      <div class="col">
-        <%= anime.spot %>
-      </div>
-    </div>
-    <% end %>
-  <% end %>
+  </div>
 </div>
