@@ -47,7 +47,7 @@
           <% @scenes.each do |scene| %>
             marker[i] = new google.maps.Marker({
               position:  {lat: <%= scene.latitude %>, lng:<%= scene.longitude %>},
-              map: map
+              map: map,
             });
             
             infoWindow[i] = new google.maps.InfoWindow({
@@ -62,7 +62,10 @@
           <% @stores.each do |store| %>
             marker[i] = new google.maps.Marker({
               position:  {lat: <%= store.latitude %>, lng:<%= store.longitude %>},
-              map: map
+              icon: {
+                url: "/assets/blue-dot.png"
+              },
+              map: map,
             });
             
             infoWindow[i] = new google.maps.InfoWindow({

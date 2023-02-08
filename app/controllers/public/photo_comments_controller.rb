@@ -1,4 +1,5 @@
 class Public::PhotoCommentsController < ApplicationController
+  before_action :authenticate_user!
   def create
     photo = Photo.find(params[:photo_id])
     reply = PhotoComment.new(photo_comment_params)

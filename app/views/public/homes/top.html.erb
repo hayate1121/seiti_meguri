@@ -1,16 +1,41 @@
 <div class="container">
-  <div class="row mt-5">
-    <div class="col">
-      <h6 class="text-center">
-        このサイトは聖地巡礼の際に活用できる</br>
-        アプリケーションとなります。
-      </h6>
+  <div class="row">
+    <div class="col-8">
+      <div class="row mt-2">
+        <div class="col">
+          <h4 class="text-center mt-5">
+            ようこそ聖地巡りへ</br>
+            このサイトは聖地巡礼の際に活用できる</br>
+            アプリケーションとなります。
+          </h4>
+        </div>
+      </div>
+      <% if user_signed_in? %>
+      <% elsif admin_signed_in? %>
+      <% else %>
+      <div class="row mt-5">
+        <div class="col text-center">
+          ユーザー登録せず利用する場合は下記リンクからログインして下さい<br>
+          <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-2 text-center">
+      <div class="row mt-5">
+        <div class="col">
+          <h5>新着作品</h5>
+        </div>
+      </div>
+      <div class="border border-dark">
+      <% @animes.each do |anime| %>
+      <div class="row">
+        <div class="col">
+          <%= link_to anime.title, anime_path(anime.id) %>
+        </div>
+      </div>
+      <% end %>
+      </div>
     </div>
   </div>
-  <% if user_signed_in? %>
-  <% else %>
-  <div class="row">
-    <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-  </div>
-  <% end %>
 </div>

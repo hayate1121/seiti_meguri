@@ -1,4 +1,5 @@
 class Public::ScenesController < ApplicationController
+  before_action :authenticate_user!
   def show
     @scene = Scene.find(params[:id])
     @photo = Photo.new

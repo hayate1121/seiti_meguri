@@ -11,7 +11,7 @@
           <%= image_tag @photo.get_image(400,400) %>
         </div>
       </div>
-      <div class="row">
+      <div class="row mt-2">
         <div class="col-2">
           住所
         </div>
@@ -19,7 +19,7 @@
           <%= @photo.address %>
         </div>
       </div>
-      <div class="row">
+      <div class="row mt-1">
         <div class="col-2">
           コメント
         </div>
@@ -27,14 +27,22 @@
           <%= @photo.comment %>
         </div>
       </div>
+      <div class="row mt-1">
+        <div class="col-2">
+          投稿者
+        </div>
+        <div class="col-10">
+          <%= link_to @photo.user.name, user_path(@photo.user.id) %>
+        </div>
+      </div>
       <% if @photo.user_id == current_user.id %>
-      <div class="row">
+      <div class="row mt-1">
         <div class="col">
           <%= link_to "編集する", edit_photo_path %>
         </div>
       </div>
       <% end %>
-      <div class="row">
+      <div class="row mt-1">
         <div class="col">
         <% if @photo.favorited_by?(current_user) %>
           <%= link_to photo_favorites_path(@photo.id), method: :delete do %>

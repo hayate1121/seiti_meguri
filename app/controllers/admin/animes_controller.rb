@@ -1,4 +1,5 @@
 class Admin::AnimesController < ApplicationController
+  before_action :authenticate_admin!
   def new
     @anime = Anime.new
   end

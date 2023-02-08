@@ -1,4 +1,5 @@
 class Admin::PhotosController < ApplicationController
+  before_action :authenticate_admin!
   def show
     @photo = Photo.find(params[:id])
   end
@@ -11,7 +12,7 @@ class Admin::PhotosController < ApplicationController
     photo = Photo.find(params[:id])
     anime = photo.anime
     photo.destroy
-    redirect_to admin_anime_path(anime.id)
+    redirect_to admin_scene_path(anime.id)
   end
   
   private

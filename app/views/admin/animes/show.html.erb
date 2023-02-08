@@ -62,6 +62,9 @@
           <% @stores.each do |store| %>
             marker[i] = new google.maps.Marker({
               position:  {lat: <%= store.latitude %>, lng:<%= store.longitude %>},
+              icon: {
+                url: "/assets/blue-dot.png"
+              },
               map: map
             });
             

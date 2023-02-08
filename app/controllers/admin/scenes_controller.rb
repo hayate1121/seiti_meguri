@@ -1,4 +1,5 @@
 class Admin::ScenesController < ApplicationController
+  before_action :authenticate_admin!
   def new
     @scene = Scene.new
     @scene.anime_id = params[:anime_id]

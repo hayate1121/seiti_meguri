@@ -1,4 +1,5 @@
 class Public::AnimesController < ApplicationController
+  before_action :authenticate_user!
   def index
     @animes = params[:tag_id].present? ? Tag.find(params[:tag_id]).animes.order("title") : Anime.order("title").all
   end

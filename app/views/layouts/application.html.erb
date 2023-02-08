@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -15,7 +16,10 @@
       <nav class="navbar navbar-expand">
         <div class="container">
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <%= link_to "聖地巡り", root_path, class: "nav-link text-dark navbar-brand" %>
+            <%= link_to root_path, class: "nav-link text-dark navbar-brand" do %>
+              <%= image_tag 'map-icon.png', class: 'icon' %>
+              聖地巡り
+            <% end %>
             <div class="col">
             </div>
             <ul class="navbar-nav ml-auto">
@@ -76,6 +80,8 @@
         </div>
       </nav>
     </header>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

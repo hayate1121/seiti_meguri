@@ -1,4 +1,5 @@
 class Business::StoresController < ApplicationController
+  before_action :authenticate_store!
   def show
     @store = Store.find(params[:id])
   end
@@ -16,7 +17,8 @@ class Business::StoresController < ApplicationController
   def destroy
     store = Store.find(params[:id])
     store.destroy
-    redirect_to stores_path
+    reset_session
+    redirect_to root_path
   end
   
   private
