@@ -47,7 +47,6 @@ Rails.application.routes.draw do
   
   #管理者用.
   namespace :admin do
-    root to: "homes#top"
     resources :animes
     resources :scenes
     resources :photos do
