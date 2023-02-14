@@ -63,7 +63,7 @@
             marker[i] = new google.maps.Marker({
               position:  {lat: <%= store.latitude %>, lng:<%= store.longitude %>},
               icon: {
-                url: '<%= asset_path("/assets/blue-dot.png") %>'
+                url: '<%= asset_path("blue-dot.png") %>'
               },
               map: map
             });
