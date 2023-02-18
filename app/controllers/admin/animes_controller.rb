@@ -43,6 +43,12 @@ class Admin::AnimesController < ApplicationController
     @animes = params[:tag_id].present? ? Tag.find(params[:tag_id]).animes.order("title") : Anime.order("title").all
   end
   
+  def destroy
+    anime = Anime.find(params[:id])
+    anime.destroy
+    redirect_to admin_animes_path
+  end
+  
   private
   
   def anime_params
