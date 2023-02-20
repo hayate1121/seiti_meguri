@@ -28,6 +28,11 @@ class Public::PhotosController < ApplicationController
   
   def edit
     @photo = Photo.find(params[:id])
+    @user = @photo.user
+    if current_user == @user
+    else
+      redirect_to photo_path(@photo.id)
+    end
   end
   
   def update
@@ -38,8 +43,13 @@ class Public::PhotosController < ApplicationController
   
   def destroy
     photo = Photo.find(params[:id])
-    photo.destroy
-    redirect_to photos_path
+    scene = photo.scene
+    if current_user == photo.user
+      photo.destroy
+      redirect_to scene_path
+    else
+      redirect_to photo_path
+    end
   end
   
   private

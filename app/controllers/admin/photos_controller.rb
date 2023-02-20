@@ -10,9 +10,9 @@ class Admin::PhotosController < ApplicationController
   
   def destroy
     photo = Photo.find(params[:id])
-    anime = photo.anime
+    scene = photo.scene
     photo.destroy
-    redirect_to admin_scene_path(anime.id)
+    redirect_to admin_scene_path(scene.id)
   end
   
   private
